@@ -1083,6 +1083,51 @@ SortedSet的常见命令有：
 
 
 
+**SortedSet命令练习**
+
+将班级的下列学生得分存入Redis的SortedSet中：
+
+Jack 85, Lucy 89, Rose 82, Tom 95, Jerry 78, Amy 92, Miles 76
+
+* 并实现下列功能：
+* 删除Tom同学
+* 获取Amy同学的分数
+* 获取Rose同学的排名
+* 查询80分以下有几个学生
+* 给Amy同学加2分
+* 查出成绩前3名的同学
+* 查出成绩80分以下的所有同学
+
+```redis
+127.0.0.1:6379> zadd stus 85 Jack 89 Lucy 82 Rose 95 Tom 78 Jerry 92 Amy 76 Miles
+(integer) 7
+127.0.0.1:6379> zrem stus Tom
+(integer) 1
+127.0.0.1:6379> zrank stus Rose
+(integer) 2
+127.0.0.1:6379> zrevrank stus Rose
+(integer) 3
+127.0.0.1:6379> zcard stus
+(integer) 6
+127.0.0.1:6379> zcount stus 0 80
+(integer) 2
+127.0.0.1:6379> zincrby stus 2 Amy
+"94"
+127.0.0.1:6379> zrange stus 0 2
+1) "Miles"
+2) "Jerry"
+3) "Rose"
+127.0.0.1:6379> zrevrange stus 0 2
+1) "Amy"
+2) "Lucy"
+3) "Jack"
+127.0.0.1:6379> zrangebyscore stus 0 80
+1) "Miles"
+2) "Jerry"
+```
+
+
+
 ## 5.Redis的Java客户端-Jedis
 
 在Redis官网中提供了各种语言的客户端，地址：https://redis.io/docs/clients/
