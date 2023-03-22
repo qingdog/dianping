@@ -19,7 +19,11 @@ spring:
 #        - 192.168.150.101:8003
 
 #日志级别
-
+#logging:
+#  level:
+#    io.lettuce.core: debug
+#  pattern:
+#    dateformat: MM-dd HH:mm:ss:SSS
 #哨兵（单节点）
 #    sentinel:
 #      master: mymaster
