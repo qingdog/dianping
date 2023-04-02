@@ -116,6 +116,8 @@ docker load -i canal.tar
 
 然后运行命令创建Canal容器：
 
+> destinations集群名称=heima
+
 ```sh
 docker run -p 11111:11111 --name canal \
 -e canal.destinations=heima \
@@ -153,3 +155,34 @@ mysql 数据解析关注的表，Perl正则表达式.
 5.  多个规则组合使用然后以逗号隔开：canal\\..*,mysql.test1,mysql.test2 
 ```
 
+
+
+查看canal日志
+
+```shell
+docker logs -f canal
+```
+
+![](https://i0.hdslb.com/bfs/note/2cde10ec431f047e179130bc3314794cb9cacd32.png)
+
+
+
+查看mysql与canal建立连接
+
+输入命令进入canal容器内部
+
+```shell
+docker exec -it canal bash
+```
+
+查看canal运行日志
+
+```shell
+tail -f canal-server/logs/canal/canal.log
+```
+
+![](https://i0.hdslb.com/bfs/note/41a11f2277bdd98af244f3e976ac265901d2d110.png)
+
+监控的数据库的日志（尝试连接mysql，寻找偏移量位置做主从同步）
+
+![](https://i0.hdslb.com/bfs/note/08c1424dcf63612bdc1b088f587f8c8c3d6dc89d.png)
