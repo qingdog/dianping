@@ -246,7 +246,7 @@ redis的启动方式有很多种，例如：
 
 安装完成后，在任意目录输入redis-server命令即可启动Redis：
 
-```
+```shell
 redis-server
 ```
 
@@ -264,7 +264,7 @@ redis-server
 
 我们先将这个配置文件备份一份：
 
-```
+```shell
 cp redis.conf redis.conf.bck
 ```
 
@@ -333,7 +333,7 @@ vi /etc/systemd/system/redis.service
 
 内容如下：
 
-```conf
+```properties
 [Unit]
 Description=redis-server
 After=network.target
