@@ -246,7 +246,7 @@ redis的启动方式有很多种，例如：
 
 安装完成后，在任意目录输入redis-server命令即可启动Redis：
 
-```shell
+```sh
 redis-server
 ```
 
@@ -264,7 +264,7 @@ redis-server
 
 我们先将这个配置文件备份一份：
 
-```shell
+```sh
 cp redis.conf redis.conf.bck
 ```
 

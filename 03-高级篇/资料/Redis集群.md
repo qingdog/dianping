@@ -149,7 +149,7 @@ cp redis-6.2.4/redis.conf 7001
 cp redis-6.2.4/redis.conf 7002
 cp redis-6.2.4/redis.conf 7003
 
-# 方式二：管道组合命令，一键拷贝
+# 方式二：管道组合命令，一键拷贝 -t 选项用于在执行命令前打印出即将执行的命令，-n 1 选项表示每次执行命令时只使用一个参数
 echo 7001 7002 7003 | xargs -t -n 1 cp redis-6.2.4/redis.conf
 ```
 
@@ -186,7 +186,7 @@ sed -i '1a replica-announce-ip 192.168.150.101' 7001/redis.conf
 sed -i '1a replica-announce-ip 192.168.150.101' 7002/redis.conf
 sed -i '1a replica-announce-ip 192.168.150.101' 7003/redis.conf
 
-# 或者一键修改
+# 或者一键修改 printf打印%s空格隔开多个字符串\n换行，| xargs -I{}把打印的每一行字符串以{}在后续使用
 printf '%s\n' 7001 7002 7003 | xargs -I{} -t sed -i '1a replica-announce-ip 192.168.150.101' {}/redis.conf
 ```
 
